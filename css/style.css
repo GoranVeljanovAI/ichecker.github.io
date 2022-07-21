@@ -1,22 +1,29 @@
 ul {
     display: flex;
 }
+
 li {
     list-style: none;
 }
+
 .text {
     font-family: Garamond, serif;
     font-size: 55px;
     font-weight: bold;
     margin: auto;
     padding: 25px;
+    position: relative;
 }
+
 div.col-md-2 {
     margin-bottom: 5px;
     margin-top: 5px;
 }
 
-img#logo { width: 10%}
+img#logo {
+    width: 50%
+}
+
 div.logo {
     padding-top: 25px;
     margin-left: 60px;
@@ -26,11 +33,13 @@ div.logo {
 div.logo a {
     display: flex;
 }
+
 .input-group {
     margin-left: 36%;
     width: 30%;
     padding: 30px;
 }
+
 img.check-img {
     border: 3px solid #ddd;
     border-radius: 4px;
@@ -43,6 +52,7 @@ img.check-img {
 img.check-img:hover {
     box-shadow: 0 0 2px 1px rgba(0, 140, 186, 0.5);
 }
+
 #myBtn {
     display: none;
     position: fixed;
@@ -62,11 +72,13 @@ img.check-img:hover {
 #myBtn:hover {
     background-color: #555;
 }
+
 footer {
     width: 100%;
     font-weight: bold;
     font-size: 20px;
 }
+
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans&family=Vollkorn:ital,wght@0,600;1,500&display=swap');
 
 :root {
@@ -74,7 +86,7 @@ footer {
     --type-quote: Vollkorn;
     --quote-image-width: 140px;
     --border-rad: 7px;
-    --accent-color: rgb(220,30,66);
+    --accent-color: rgb(220, 30, 66);
     --quote-bg: hsl(0 0% 97%);
 }
 
@@ -94,15 +106,17 @@ a:hover,
 a:focus {
     text-decoration: underline;
 }
+
 .admin {
     font-family: Garamond, serif;
 }
+
 body {
     margin: 0;
     background-color: #f6f6f6;
     font-family: var(--type-body);
     color: hsl(0 0% 15%);
-    padding:0;
+    padding: 0;
 }
 
 .article {
@@ -113,21 +127,91 @@ body {
 h1 {
     width: max-content;
     margin: 0 auto 1.8em;
-    box-shadow:
-            0 2px 0 var(--accent-color),
-            0 4px 0 white,
-            0 6px 0 var(--accent-color);
+    box-shadow: 0 2px 0 var(--accent-color),
+    0 4px 0 white,
+    0 6px 0 var(--accent-color);
     font: 1.4rem var(--type-quote);
     color: hsl(0 0% 25%);
     font-weight: bold;
     font-size: 40px;
     margin-left: 38%
 }
+
 #main_logo {
     position: absolute;
     height: 100px;
-    left: 525px;
-    top: 70px;
+    left: -40px;
+    top: 10px;
+}
+
+.guide_plan {
+    float: right;
+}
+
+.collapsible {
+    color: white;
+    cursor: pointer;
+    width: 100%;
+    border: none;
+    outline: none;
+    font-size: 15px;
+    text-decoration: none;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+.active, .collapsible:hover {
+    background-color: #555;
+    text-decoration: none;
+}
+
+.collapsible:after {
+    content: '\002B';
+    color: white;
+    font-weight: bold;
+    float: right;
+    margin-left: 540px;
+}
+
+.collapsible-2:after {
+    content: '\002B';
+    color: white;
+    font-weight: bold;
+    position: absolute;
+    top: -2px;
+    left: 8px;
+
+}
+
+.active:after {
+    content: "\2212";
+}
+
+.btn-2 {
+    display: inline-block;
+    float: right;
+    height: 20px;
+    position: relative;
+}
+
+.content {
+    padding: 0 18px;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.2s ease-out;
+    background-color: rgb(198, 199, 200);
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    font-weight: bold;
+}
+
+.content-2 {
+    max-height: 0;
+    overflow: hidden;
+    padding: 0 30px;
+    text-align: center;
+    transition: max-height 0.2s ease-out;
+
 }
 
 blockquote {
@@ -153,9 +237,8 @@ blockquote::before {
     right: 0;
     bottom: 0;
     border-radius: var(--border-rad);
-    box-shadow:
-            inset -2px -2px 1px hsl(0 0% 100%),
-            inset 2px 2px 4px hsl(0 0% 0% / 20%);
+    box-shadow: inset -2px -2px 1px hsl(0 0% 100%),
+    inset 2px 2px 4px hsl(0 0% 0% / 20%);
 }
 
 blockquote::after {
