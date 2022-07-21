@@ -165,6 +165,7 @@ h1 {
     text-decoration: none;
 }
 
+
 .collapsible:after {
     content: '\002B';
     color: white;
@@ -177,10 +178,21 @@ h1 {
     content: '\002B';
     color: white;
     font-weight: bold;
-    position: absolute;
-    top: -2px;
-    left: 8px;
+    float: right;
+}
 
+.collapsible-3:after {
+    content: '\002B';
+    color: white;
+    font-weight: bold;
+    float: right;
+}
+
+.collapsible-4:after {
+    content: '\002B';
+    color: white;
+    font-weight: bold;
+    float: right;
 }
 
 .active:after {
@@ -190,7 +202,8 @@ h1 {
 .btn-2 {
     display: inline-block;
     float: right;
-    height: 20px;
+    height: 35px;
+    width: 35%;
     position: relative;
 }
 
@@ -211,7 +224,22 @@ h1 {
     padding: 0 30px;
     text-align: center;
     transition: max-height 0.2s ease-out;
+}
 
+.content-3 {
+    max-height: 0;
+    overflow: hidden;
+    padding: 0 30px;
+    text-align: center;
+    transition: max-height 0.2s ease-out;
+}
+
+.content-4 {
+    max-height: 0;
+    overflow: hidden;
+    padding: 0 30px;
+    text-align: center;
+    transition: max-height 0.2s ease-out;
 }
 
 blockquote {

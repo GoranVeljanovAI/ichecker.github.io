@@ -93,6 +93,8 @@ function reset() {
 // User's guide panel
 let coll = document.getElementsByClassName("collapsible");
 let coll2 = document.getElementsByClassName("collapsible-2");
+let coll3 = document.getElementsByClassName("collapsible-3");
+let coll4 = document.getElementsByClassName("collapsible-4");
 
 for (let i = 0; i < coll.length; i++) {
     coll[i].addEventListener("click", function () {
@@ -103,15 +105,32 @@ for (let i = 0; i < coll.length; i++) {
         } else {
             content.style.maxHeight = 500 + content.scrollHeight + "px";
         }
-        coll2[i].addEventListener("click", function () {
-            this.classList.toggle("active");
-            let content2 = this.nextElementSibling;
-            if (content2.style.maxHeight) {
-                content2.style.maxHeight = null;
-            } else {
-                content2.style.maxHeight = content2.scrollHeight + "px";
-            }
-        });
     });
-
+    coll2[i].addEventListener("click", function () {
+        this.classList.toggle("active");
+        let content2 = this.nextElementSibling;
+        if (content2.style.maxHeight) {
+            content2.style.maxHeight = null;
+        } else {
+            content2.style.maxHeight = content2.scrollHeight + "px";
+        }
+    });
+    coll3[i].addEventListener("click", function () {
+        this.classList.toggle("active");
+        let content2 = this.nextElementSibling;
+        if (content2.style.maxHeight) {
+            content2.style.maxHeight = null;
+        } else {
+            content2.style.maxHeight = content2.scrollHeight + "px";
+        }
+    })
+    coll4[i].addEventListener("click", function () {
+        this.classList.toggle("active");
+        let content2 = this.nextElementSibling;
+        if (content2.style.maxHeight) {
+            content2.style.maxHeight = null;
+        } else {
+            content2.style.maxHeight = content2.scrollHeight + "px";
+        }
+    });
 }
