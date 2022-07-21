@@ -11,10 +11,6 @@ li {
     margin: auto;
     padding: 25px;
 }
-body {
-    background-color: #f6f6f6;
-
-}
 div.col-md-2 {
     margin-bottom: 5px;
     margin-top: 5px;
@@ -81,7 +77,7 @@ footer {
     --type-quote: Vollkorn;
     --quote-image-width: 140px;
     --border-rad: 7px;
-    --accent-color: hsl(322deg 85% 65%);
+    --accent-color: rgb(220,30,66);
     --quote-bg: hsl(0 0% 97%);
 }
 
@@ -101,9 +97,12 @@ a:hover,
 a:focus {
     text-decoration: underline;
 }
-
+.admin {
+    font-family: Garamond, serif;
+}
 body {
-    margin: 15px 10px;
+    margin: 0;
+    background-color: #f6f6f6;
     font-family: var(--type-body);
     color: hsl(0 0% 15%);
     padding:0;
@@ -128,7 +127,7 @@ h1 {
 
 blockquote {
     position: relative;
-    margin: 40px 0;
+    margin: auto;
     padding: 1.6em 2.4em .7em calc(1.4em + var(--quote-image-width));
     font: italic 1.2rem var(--type-quote);
     background: var(--quote-bg) no-repeat left / var(--quote-image-width);
@@ -136,12 +135,7 @@ blockquote {
     border: 2px solid white;
     box-shadow: 2px 2px 4px hsl(0 0% 0% / 20%);
     text-indent: 1.6em;
-}
-
-@media (min-width: 768px) {
-    blockquote {
-        margin: 40px 60px;
-    }
+    width: 70%;
 }
 
 blockquote::before {
@@ -186,7 +180,7 @@ blockquote::after {
     top: 0;
     width: var(--quote-image-width);
     height: 100%;
-    opacity: 0.75;
+
     background-image: url("../image/sadas.jpg");
     background-size: cover;
     background-blend-mode: hard-light;
@@ -199,7 +193,7 @@ cite {
     margin-top: 30px;
     text-indent: 0;
     text-align: center;
-    font: bold .9rem var(--type-body);
+
     text-transform: uppercase;
     color: hsl(0 0% 20%);
 }
