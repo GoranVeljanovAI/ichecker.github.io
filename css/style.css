@@ -6,6 +6,10 @@ li {
 }
 .text {
     font-family: Garamond, serif;
+    font-size: 55px;
+    font-weight: bold;
+    margin: auto;
+    padding: 25px;
 }
 body {
     background-color: #f6f6f6;
@@ -18,11 +22,21 @@ div.col-md-2 {
 
 img#logo { width: 10%}
 div.logo {
-    text-align: center;
+    padding-top: 25px;
+    margin-left: 60px;
+
+}
+h1 {
+    font-weight: bold;
+    font-size: 40px;
+}
+div.logo a {
+    display: flex;
 }
 .input-group {
-    margin-left: 38%;
+    margin-left: 36%;
     width: 30%;
+    padding: 30px;
 }
 img.check-img {
     border: 3px solid #ddd;
