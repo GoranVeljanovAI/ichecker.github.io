@@ -40,6 +40,7 @@ function loadProducts() {
         img.src = images[i]
         div.appendChild(img)
     }
+    document.getElementById('total').innerText = "[" + images.length + "]";
 }
 //Get the button
 let myButton = document.getElementById("myBtn")
@@ -63,3 +64,4 @@ function topFunction() {
 function reset() {
     location.reload();
 }
+
