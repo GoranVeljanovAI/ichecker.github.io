@@ -61,6 +61,25 @@ function loadProducts() {
     }
 
     document.getElementById('total').innerText = "[" + images.length + "]";
+
+    // Get the modal; Get the image and insert it inside the modal
+    let modal = document.getElementById("myModal");
+    let img = document.getElementsByClassName("check-img");
+    let modalImg = document.getElementById("img01");
+
+    for (let i = 0; i < images.length;i++) {
+        img[i].onclick = function(){
+            modal.style.display = "block";
+            modalImg.src = this.src;
+        }
+    }
+
+// Get the (x) element that closes the modal;  When the user clicks on , close the modal
+    let span = document.getElementsByClassName("close")[0];
+
+    span.onclick = function() {
+        modal.style.display = "none";
+    }
 }
 
 //Get the button
