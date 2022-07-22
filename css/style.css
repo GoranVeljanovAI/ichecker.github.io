@@ -211,7 +211,7 @@ h1 {
     padding: 0 18px;
     max-height: 0;
     overflow: hidden;
-    transition: max-height 0.2s ease-out;
+    transition: max-height 1.5s ease-out;
     background-color: rgb(198, 199, 200);
     border-bottom-left-radius: 5px;
     border-bottom-right-radius: 5px;
