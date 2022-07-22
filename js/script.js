@@ -103,7 +103,7 @@ for (let i = 0; i < coll.length; i++) {
         if (content.style.maxHeight) {
             content.style.maxHeight = null;
         } else {
-            content.style.maxHeight = 500 + content.scrollHeight + "px";
+            content.style.maxHeight = 1000 + content.scrollHeight + "px";
         }
     });
     coll2[i].addEventListener("click", function () {
