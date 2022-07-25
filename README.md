@@ -1,7 +1,8 @@
 # ichecker.github.io
 
-# This is small project for work improvment
-
+# This is small project for work improvement
+###### Firstly, I want to announce that this website is used only for Norna Ai analytics.The website is created to help company's employees to check images correction from the Data Base.
+###### To better understand the application and the procces how it works you can visit the website at the following link https://goranveljanovai.github.io/ichecker.github.io/
 ## Start Guide
 
 ### Before you use the application first read the guide below:
