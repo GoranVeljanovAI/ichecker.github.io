@@ -39,7 +39,9 @@ div.logo a {
     width: 30%;
     padding: 30px;
 }
-
+#uploadedFile {
+    text-decoration: underline;
+}
 img.check-img {
     border: 3px solid #ddd;
     border-radius: 4px;

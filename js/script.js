@@ -22,7 +22,7 @@ uploadedFile.onchange = function () {
 function image_url_process() {
     let str = ""
     for (let i = 0; i < images.length; i++) {
-        str = images[i].replace(/[?" ?,]/g,'')
+        str = images[i].replace(/[?" ?,]/g, '')
         images[i] = str
     }
 }
@@ -33,57 +33,76 @@ function getFileExtension() {
     return fileName.split('.').pop()
 }
 
+// Get file name from the uploaded file and display in the HTML file.
+function getFileName() {
+    let filename;
+    let fullPath = document.getElementById('file').value;
+    if (fullPath) {
+        let startIndex = (fullPath.indexOf('\\') >= 0 ? fullPath.lastIndexOf('\\') : fullPath.lastIndexOf('/'));
+        filename = fullPath.substring(startIndex);
+        if (filename.indexOf('\\') === 0 || filename.indexOf('/') === 0) {
+            filename = filename.substring(1);
+        }
+    }
+    return filename
+}
+
 // When the user upload file to load product images
 let textInfo = document.getElementById('text-info')
-function loadProducts() {
-    let modalInfoText = document.createElement('h3')
-    modalInfoText.setAttribute('class', 'modal-text-info')
-    modalInfoText.textContent = "Click on the image to open in full screen"
 
-    textInfo.appendChild(modalInfoText)
+function loadProducts() {
 
     image_url_process()
     if (uploadedFile.files.length === 0) {
         alert('Please select file')
-        return
+        return;
     } else if (getFileExtension() !== 'txt') {
         alert('Your file must be .txt format!')
         uploadedFile.value = ''
         return;
-    }
+    } else {
+        // Text info about full screen images
+        let modalInfoText = document.createElement('h3')
+        modalInfoText.setAttribute('class', 'modal-text-info')
+        modalInfoText.textContent = "Click on the image to open in full screen"
+        textInfo.appendChild(modalInfoText)
 
-    for (let i = 0; i < images.length; i++) {
-        let div = document.createElement("div")
-        div.setAttribute("class", "col-md-2")
-        box.appendChild(div)
-        let img = document.createElement("img")
-        img.setAttribute("class", "check-img")
-        img.src = images[i]
-        div.appendChild(img)
-    }
-
-    document.getElementById('total').innerText = "[" + images.length + "]";
-
-    // Get the modal; Get the image and insert it inside the modal
-    let modal = document.getElementById("myModal");
-    let img = document.getElementsByClassName("check-img");
-    let modalImg = document.getElementById("img01");
-    let button = document.querySelector(".button")
-    let imgURL = null
-
-    for (let i = 0; i < images.length; i++) {
-        img[i].onclick = function () {
-            modal.style.display = "block";
-            modalImg.src = this.src;
-            imgURL = this.src
+        for (let i = 0; i < images.length; i++) {
+            let div = document.createElement("div")
+            div.setAttribute("class", "col-md-2")
+            box.appendChild(div)
+            let img = document.createElement("img")
+            img.setAttribute("class", "check-img")
+            img.src = images[i]
+            div.appendChild(img)
         }
-        // Get the image url from the modal
-        button.onclick = function () {
-            navigator.clipboard.writeText(imgURL).then(() => {
-                button.setAttribute('class', 'btn btn-success')
-                button.innerHTML = "Copied"
-            })
+
+        document.getElementById('total').innerText = "[" + images.length + "]";
+        document.getElementById('uploadedFile').innerText = getFileName()
+
+        // Get the modal; Get the image and insert it inside the modal
+        let modal = document.getElementById("myModal");
+        let img = document.getElementsByClassName("check-img");
+        let modalImg = document.getElementById("img01");
+        let button = document.querySelector(".button")
+        let imgURL = null
+
+        for (let i = 0; i < images.length; i++) {
+            img[i].onclick = function () {
+                modal.style.display = "block";
+                modalImg.src = this.src;
+                imgURL = this.src
+            }
+            // Get the image url from the modal
+            button.onclick = function () {
+                navigator.clipboard.writeText(imgURL).then(() => {
+                    button.setAttribute('class', 'btn btn-success')
+                    button.innerHTML = "Copied"
+                })
+            }
         }
+        // reset file value
+        document.getElementById('file').value = ''
     }
 
 // Get the (x) element that closes the modal;  When the user clicks on , close the modal
