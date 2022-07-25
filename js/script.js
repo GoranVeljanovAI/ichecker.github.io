@@ -39,7 +39,14 @@ function getFileExtension() {
 }
 
 // When the user upload file to load product images
+let textInfo = document.getElementById('text-info')
 function loadProducts() {
+    let modalInfoText = document.createElement('h3')
+    modalInfoText.setAttribute('class', 'modal-text-info')
+    modalInfoText.textContent = "Click on the image to open in full screen"
+
+    textInfo.appendChild(modalInfoText)
+
     image_url_process()
     if (uploadedFile.files.length === 0) {
         alert('Please select file')
@@ -66,19 +73,31 @@ function loadProducts() {
     let modal = document.getElementById("myModal");
     let img = document.getElementsByClassName("check-img");
     let modalImg = document.getElementById("img01");
+    let button = document.querySelector(".button")
+    let imgURL = null
 
-    for (let i = 0; i < images.length;i++) {
-        img[i].onclick = function(){
+    for (let i = 0; i < images.length; i++) {
+        img[i].onclick = function () {
             modal.style.display = "block";
             modalImg.src = this.src;
+            imgURL = this.src
+        }
+        // Get the image url from the modal
+        button.onclick = function () {
+            navigator.clipboard.writeText(imgURL).then(() => {
+                button.setAttribute('class', 'btn btn-success')
+                button.innerHTML = "Copied"
+            })
         }
     }
 
 // Get the (x) element that closes the modal;  When the user clicks on , close the modal
     let span = document.getElementsByClassName("close")[0];
 
-    span.onclick = function() {
+    span.onclick = function () {
         modal.style.display = "none";
+        button.setAttribute('class', 'btn btn-danger')
+        button.innerHTML = "Copy img URL"
     }
 }
 

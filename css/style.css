@@ -368,7 +368,7 @@ cite {
     left: 0;
     top: 0;
     width: 100%; /* Full width */
-    height: auto; /* Full height */
+    height: 100%; /* Full height */
     overflow: auto; /* Enable scroll if needed */
     background-color: rgb(0,0,0); /* Fallback color */
     background-color: rgba(0,0,0,0.9); /* Black w/ opacity */
@@ -380,6 +380,7 @@ cite {
     display: block;
     width: 70%;
     max-width: 550px;
+    height: auto;
 }
 
 /* Caption of Modal Image */
@@ -400,6 +401,11 @@ cite {
     -webkit-animation-duration: 0.6s;
     animation-name: zoom;
     animation-duration: 0.6s;
+}
+.modal-text-info {
+    color: #DC1E42;
+    text-align: center;
+    font-weight: bold;
 }
 
 @-webkit-keyframes zoom {
