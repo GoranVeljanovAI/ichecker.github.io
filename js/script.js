@@ -22,12 +22,7 @@ uploadedFile.onchange = function () {
 function image_url_process() {
     let str = ""
     for (let i = 0; i < images.length; i++) {
-        str = images[i].trim()
-        str = str.slice(1)
-        str = str.slice(0, str.length - 1)
-        if (str.charAt(str.length - 2) === /[a-zA-Z]/) {
-            str = str.slice(0, str.length - 2)
-        }
+        str = images[i].replace(/[?" ?,]/g,'')
         images[i] = str
     }
 }
