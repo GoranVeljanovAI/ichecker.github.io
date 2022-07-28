@@ -21,10 +21,19 @@ uploadedFile.onchange = function () {
 // remove the special characters from the image URL string
 function image_url_process() {
     let str = ""
+    let test = images[images.length]
+
+    /*console.log(test)
+    console.log(test.trim())
+    console.log(test.length)
+    console.log(test.charAt(test.length-2))*/
     for (let i = 0; i < images.length; i++) {
-        str = images[i].replace(/[?" ?,]/g, '')
-        images[i] = str
+
+        str = images[i].replace(/[",]/g, '')
+        images[i] = str.trim()
+
     }
+
 }
 
 // Check if user file format is correct!
@@ -60,7 +69,7 @@ function loadProducts() {
         alert('Your file must be .txt format!')
         uploadedFile.value = ''
         return;
-    } else {
+    }
         // Text info about full screen images
         let modalInfoText = document.createElement('h3')
         modalInfoText.setAttribute('class', 'modal-text-info')
@@ -103,7 +112,7 @@ function loadProducts() {
         }
         // reset file value
         document.getElementById('file').value = ''
-    }
+
 
 // Get the (x) element that closes the modal;  When the user clicks on , close the modal
     let span = document.getElementsByClassName("close")[0];
