@@ -17,23 +17,18 @@ uploadedFile.onchange = function () {
     }
     reader.readAsText(file)
 }
+let counter = 0
 
 // remove the special characters from the image URL string
 function image_url_process() {
     let str = ""
     let test = images[images.length]
 
-    /*console.log(test)
-    console.log(test.trim())
-    console.log(test.length)
-    console.log(test.charAt(test.length-2))*/
     for (let i = 0; i < images.length; i++) {
-
         str = images[i].replace(/[",]/g, '')
         images[i] = str.trim()
-
     }
-
+    counter = images.length
 }
 
 // Check if user file format is correct!
@@ -70,58 +65,79 @@ function loadProducts() {
         uploadedFile.value = ''
         return;
     }
-        // Text info about full screen images
-        let modalInfoText = document.createElement('h3')
-        modalInfoText.setAttribute('class', 'modal-text-info')
-        modalInfoText.textContent = "Click on the image to open in full screen"
-        textInfo.appendChild(modalInfoText)
+    // Text info about full screen images
+    let modalInfoText = document.createElement('h3')
+    modalInfoText.setAttribute('class', 'modal-text-info')
+    modalInfoText.textContent = "Click on the image to open in full screen"
+    textInfo.appendChild(modalInfoText)
 
-        for (let i = 0; i < images.length; i++) {
-            let div = document.createElement("div")
-            div.setAttribute("class", "col-md-2")
-            box.appendChild(div)
-            let img = document.createElement("img")
-            img.setAttribute("class", "check-img")
-            img.src = images[i]
-            div.appendChild(img)
+    // On scroll loading products
+    $(document).ready(function () {
+        let win = $(window),
+            sectionHeight = 100,
+            currentSection = 0;
+
+        $boxing = $('.boxing')
+
+        function myFunction(n) {
+
+            for (let i = (n - 1) * 100; i < n * 100; i++) {
+                    if(i < images.length) {
+                        let div = document.createElement("div")
+                        div.setAttribute("class", "col-md-2")
+                        $boxing.append(div)
+                        let img = document.createElement("img")
+                        img.setAttribute("class", "check-img")
+                        img.setAttribute("loading", "lazy")
+                        img.src = images[i]
+                        div.appendChild(img)
+                    }
+
+            }
+
+            // Get the modal; Get the image and insert it inside the modal
+            let modal = document.getElementById("myModal");
+            let img = document.getElementsByClassName("check-img");
+            let modalImg = document.getElementById("img01");
+            let button = document.querySelector(".button")
+            let imgURL = null
+
+            for (let i = 0; i < images.length; i++) {
+                img[i].onclick = function () {
+                    modal.style.display = "block";
+                    modalImg.src = this.src;
+                    imgURL = this.src
+                }
+                // Get the image url from the modal
+                button.onclick = function () {
+                    navigator.clipboard.writeText(imgURL).then(() => {
+                        button.setAttribute('class', 'btn btn-success')
+                        button.innerHTML = "Copied"
+                    })
+                }
+                // Get the (x) element that closes the modal;  When the user clicks on , close the modal
+                let span = document.getElementsByClassName("close")[0];
+
+                span.onclick = function () {
+                    modal.style.display = "none";
+                    button.setAttribute('class', 'btn btn-danger')
+                    button.innerHTML = "Copy img URL"
+                }
+            }
         }
 
-        document.getElementById('total').innerText = "[" + images.length + "]";
-        document.getElementById('uploadedFile').innerText = getFileName()
-
-        // Get the modal; Get the image and insert it inside the modal
-        let modal = document.getElementById("myModal");
-        let img = document.getElementsByClassName("check-img");
-        let modalImg = document.getElementById("img01");
-        let button = document.querySelector(".button")
-        let imgURL = null
-
-        for (let i = 0; i < images.length; i++) {
-            img[i].onclick = function () {
-                modal.style.display = "block";
-                modalImg.src = this.src;
-                imgURL = this.src
+        win.scroll(function () {
+            let calculateSection = parseInt(win.scrollTop() / sectionHeight, 10);
+            if (currentSection !== calculateSection) {
+                currentSection = calculateSection;
+                myFunction(currentSection);
             }
-            // Get the image url from the modal
-            button.onclick = function () {
-                navigator.clipboard.writeText(imgURL).then(() => {
-                    button.setAttribute('class', 'btn btn-success')
-                    button.innerHTML = "Copied"
-                })
-            }
-        }
-        // reset file value
-        document.getElementById('file').value = ''
+        });
+    })
 
-
-// Get the (x) element that closes the modal;  When the user clicks on , close the modal
-    let span = document.getElementsByClassName("close")[0];
-
-    span.onclick = function () {
-        modal.style.display = "none";
-        button.setAttribute('class', 'btn btn-danger')
-        button.innerHTML = "Copy img URL"
-    }
+    document.getElementById('total').innerText = "[" + images.length + "]";
+    document.getElementById('uploadedFile').innerText = getFileName()
+    document.getElementById('file').value = ''
 }
 
 //Get the button

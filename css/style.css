@@ -54,6 +54,9 @@ img.check-img {
 img.check-img:hover {
     box-shadow: 0 0 2px 1px rgba(0, 140, 186, 0.5);
 }
+.img-wrapper{
+    min-height: 1000px;
+}
 
 #myBtn {
     display: none;
@@ -79,6 +82,7 @@ footer {
     width: 100%;
     font-weight: bold;
     font-size: 20px;
+    height: auto;
 }
 
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans&family=Vollkorn:ital,wght@0,600;1,500&display=swap');
